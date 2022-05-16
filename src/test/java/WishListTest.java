@@ -1,18 +1,33 @@
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class WishListTest {
 
+    private WebDriver driver;
 
-    public void addToWishlist() {
+    @Before
+    public void openDriver(){
         System.setProperty("webdriver.chrome.driver","resources/chromedriver");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://testfasttrackit.info/selenium-test/");
-        driver.findElement(By.cssSelector("#nav > ol > li.level0.nav-5.parent > a")).click();
-        driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col3-layout > div > div.col-wrapper > div.col-main > div.category-products > ul > li > div > h2 > a")).click();
-        driver.findElement(By.cssSelector("#product_addtocart_form > div.product-shop > div.product-options-bottom > ul.add-to-links > li:nth-child(1) > a")).click();
+        driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+        driver.get("http://testfasttrackit.info/selenium-test/");
+    }
+
+    @Test
+    public void addToWishlist() {
+        driver.findElement(By.cssSelector(".level0.nav-5.parent")).click();
+        driver.findElement(By.cssSelector("h2 a")).click();
+        driver.findElement(By.cssSelector(".link-wishlist")).click();
+
+    }
+
+    @After
+    public void closeDriver(){
+
         driver.close();
     }
 }
