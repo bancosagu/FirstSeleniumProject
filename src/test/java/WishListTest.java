@@ -1,6 +1,7 @@
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,7 +10,7 @@ public class WishListTest {
 
     private WebDriver driver;
 
-    @Before
+    @BeforeEach
     public void openDriver(){
         System.setProperty("webdriver.chrome.driver","resources/chromedriver");
         driver = new ChromeDriver();
@@ -18,14 +19,17 @@ public class WishListTest {
     }
 
     @Test
-    public void addToWishlist() {
+    public void addToWishlistAsGuest() {
         driver.findElement(By.cssSelector(".level0.nav-5.parent")).click();
         driver.findElement(By.cssSelector("h2 a")).click();
         driver.findElement(By.cssSelector(".link-wishlist")).click();
+        String textFromElement = driver.findElement(By.cssSelector(".content.fieldset h2 ")).getText();
+        Assertions.assertEquals("ALREADY REGISTERED?", textFromElement);
 
     }
 
-    @After
+//test add to wishlist + login + check wishlist
+    @AfterEach
     public void closeDriver(){
 
         driver.close();
