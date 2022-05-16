@@ -1,8 +1,8 @@
-import org.checkerframework.common.value.qual.StaticallyExecutable;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,7 +14,7 @@ public class RegisterTest {
 
     private WebDriver driver;
 
-    @Before
+    @BeforeEach
     public void openDriver(){
         System.setProperty("webdriver.chrome.driver","resources/chromedriver");
         driver = new ChromeDriver();
@@ -22,9 +22,13 @@ public class RegisterTest {
         driver.get("http://testfasttrackit.info/selenium-test/");
     }
 
+    private static String randomEmail() {
+        return "bancosagu" + UUID.randomUUID().toString() + "@gmail.com";
+        //genereaza mail nou de fiecare data, insa nu primesc confirmare
+    }
+
     @Test
     public void registerWithValidData(){
-
         driver.findElement(By.cssSelector(".skip-account .label")).click();
         driver.findElement(By.cssSelector("a[title='Register']")).click();
         driver.findElement(By.id("firstname")).sendKeys("Augustin");
@@ -35,21 +39,20 @@ public class RegisterTest {
         driver.findElement(By.className("checkbox")).click();
         driver.findElement(By.cssSelector(".button[title=Register]")).click();
         String textFromElement = driver.findElement(By.cssSelector(".success-msg")).getText();
-        Assert.assertEquals("Thank you for registering with Madison Island.", textFromElement);
+        Assertions.assertEquals("Thank you for registering with Madison Island.", textFromElement);
 
     }
-    private static String randomEmail() {
-        return "bancosagu" + UUID.randomUUID().toString() + "@gmail.com";
-    }
+
 
 
     //possible to register from checkout page
+
 
     //change password
     //not possible to change password using the last password
 
 
-    @After
+    @AfterEach
     public void closeDriver(){
         driver.close();
     }

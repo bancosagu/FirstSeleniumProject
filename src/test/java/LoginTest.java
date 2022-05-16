@@ -1,5 +1,5 @@
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
@@ -12,7 +12,7 @@ public class LoginTest {
     private WebDriver driver;
 
     @BeforeEach
-    public void openDriver(){
+    public void setUp(){
         System.setProperty("webdriver.chrome.driver","resources/chromedriver");
         driver = new ChromeDriver();
 //        driver.manage().window().maximize();
@@ -29,8 +29,8 @@ public class LoginTest {
         driver.findElement(By.id("send2")).click();
         WebElement dashboardTextElement = driver.findElement(By.cssSelector(".page-title h1"));
         String textFromElement = driver.findElement(By.cssSelector(".hello strong")).getText();
-        Assert.assertTrue(dashboardTextElement.isDisplayed());
-        Assert.assertEquals("Hello, Augustin Bancos!",textFromElement);
+        Assertions.assertTrue(dashboardTextElement.isDisplayed());
+        Assertions.assertEquals("Hello, Augustin Bancos!",textFromElement);
     }
 
     @Test
@@ -41,7 +41,7 @@ public class LoginTest {
         driver.findElement(By.id("pass")).sendKeys("Pass12345");
         driver.findElement(By.id("send2")).click();
         String textFromElement = driver.findElement(By.cssSelector(".error-msg span")).getText();
-        Assert.assertEquals("Invalid login or password.", textFromElement);
+        Assertions.assertEquals("Invalid login or password.", textFromElement);
     }
 
     @Test
@@ -53,7 +53,7 @@ public class LoginTest {
         driver.findElement(By.id("pass")).sendKeys("Pass1234");
         driver.findElement(By.id("send2")).click();
         String textFromElement = driver.findElement(By.cssSelector(".error-msg span")).getText();
-        Assert.assertEquals("Invalid login or password.", textFromElement);
+        Assertions.assertEquals("Invalid login or password.", textFromElement);
     }
 
     @Test
@@ -62,7 +62,7 @@ public class LoginTest {
         driver.findElement(By.cssSelector("a[title='Log In'")).click();
         driver.findElement(By.id("send2")).click();
         String textFromElement = driver.findElement(By.id("advice-required-entry-email")).getText();
-        Assert.assertEquals("This is a required field.", textFromElement);
+        Assertions.assertEquals("This is a required field.", textFromElement);
     }
 
     @Test
@@ -72,7 +72,7 @@ public class LoginTest {
         driver.findElement(By.id("email")).sendKeys("bancosagu@yahoo.com");
         driver.findElement(By.id("send2")).click();
         String textFromElement = driver.findElement(By.id("advice-required-entry-pass")).getText();
-        Assert.assertEquals("This is a required field.", textFromElement);
+        Assertions.assertEquals("This is a required field.", textFromElement);
     }
 
     @Test
@@ -83,7 +83,7 @@ public class LoginTest {
         driver.findElement(By.id("pass")).sendKeys("");
         driver.findElement(By.id("send2")).click();
         String textFromElement = driver.findElement(By.id("advice-required-entry-pass")).getText();
-        Assert.assertEquals("This is a required field.", textFromElement);
+        Assertions.assertEquals("This is a required field.", textFromElement);
     }
 
     @AfterEach
