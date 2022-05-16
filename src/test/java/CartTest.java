@@ -1,6 +1,5 @@
-import org.junit.Assert;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -31,8 +30,8 @@ public class CartTest {
         driver.findElement(By.cssSelector("div.add-to-cart-buttons")).click();
         WebElement dashboardTextElement = driver.findElement(By.cssSelector("div.page-title"));
         String textFromElement = driver.findElement(By.cssSelector("ul.messages")).getText();
-        Assert.assertTrue(dashboardTextElement.isDisplayed());
-        Assert.assertEquals("Elizabeth Knit Top was added to your shopping cart.", textFromElement);
+        Assertions.assertTrue(dashboardTextElement.isDisplayed());
+        Assertions.assertEquals("Elizabeth Knit Top was added to your shopping cart.", textFromElement);
     }
 
     @Test
@@ -40,9 +39,9 @@ public class CartTest {
         driver.findElement(By.cssSelector("h3 a[title^='Elizabeth']")).click();
         driver.findElement(By.cssSelector("div.add-to-cart-buttons")).click();
         String errorMessageColor = driver.findElement(By.id("advice-required-entry-attribute92")).getText();
-        Assert.assertEquals("This is a required field.", errorMessageColor);
+        Assertions.assertEquals("This is a required field.", errorMessageColor);
         String errorMessageSize = driver.findElement(By.id("advice-required-entry-attribute180")).getText();
-        Assert.assertEquals("This is a required field.", errorMessageSize);
+        Assertions.assertEquals("This is a required field.", errorMessageSize);
     }
 
     @Test
@@ -60,8 +59,8 @@ public class CartTest {
         driver.findElement(By.cssSelector("div.add-to-cart-buttons")).click();
         WebElement dashboardTextElement = driver.findElement(By.cssSelector("div.page-title"));
         String textFromElement = driver.findElement(By.cssSelector("ul.messages")).getText();
-        Assert.assertTrue(dashboardTextElement.isDisplayed());
-        Assert.assertEquals("Elizabeth Knit Top was added to your shopping cart.", textFromElement);
+        Assertions.assertTrue(dashboardTextElement.isDisplayed());
+        Assertions.assertEquals("Elizabeth Knit Top was added to your shopping cart.", textFromElement);
     }
 
     @Test
@@ -89,7 +88,7 @@ public class CartTest {
         //check cart
         driver.get("http://testfasttrackit.info/selenium-test/checkout/cart/");
         String valueFromElementQty= driver.findElement(By.cssSelector(".input-text.qty[title='Qty']")).getText();
-        Assert.assertEquals("2", valueFromElementQty);
+        Assertions.assertEquals("2", valueFromElementQty);
         //nu reuseste sa citeasca valoarea in campul "qty"
         //empty cart
         driver.findElement(By.cssSelector(".button2[title='Empty Cart']")).click();
@@ -109,7 +108,7 @@ public class CartTest {
         driver.findElement(By.cssSelector("div.add-to-cart-buttons")).click();
         driver.findElement(By.cssSelector(".button2[title='Empty Cart']")).click();
         String dashboardTextElementCartEmpty = driver.findElement(By.cssSelector(".page-title")).getText();
-        Assert.assertTrue(dashboardTextElementCartEmpty.contentEquals("SHOPPING CART IS EMPTY"));
+        Assertions.assertTrue(dashboardTextElementCartEmpty.contentEquals("SHOPPING CART IS EMPTY"));
     }
 
     @Test
@@ -122,10 +121,10 @@ public class CartTest {
         driver.findElement(By.cssSelector("div.add-to-cart-buttons")).click();
         WebElement dashboardTextElement = driver.findElement(By.cssSelector("div.page-title"));
         String textFromElement = driver.findElement(By.cssSelector("ul.messages")).getText();
-        Assert.assertTrue(dashboardTextElement.isDisplayed());
-        Assert.assertEquals("Elizabeth Knit Top was added to your shopping cart.", textFromElement);
+        Assertions.assertTrue(dashboardTextElement.isDisplayed());
+        Assertions.assertEquals("Elizabeth Knit Top was added to your shopping cart.", textFromElement);
         String valueFromElement= driver.findElement(By.cssSelector(".input-text.qty[title='Qty']")).getText();
-        Assert.assertEquals("2",valueFromElement);
+        Assertions.assertEquals("2",valueFromElement);
     //testul cade de fiecare data deoarece nu reuseste sa citeasca valoarea in campul "qty"
 
     }
