@@ -45,6 +45,10 @@ public class RegisterTest {
 
     //possible to register from checkout page
 
+    //change password
+    //not possible to change password using the last password
+
+
     @After
     public void closeDriver(){
         driver.close();
