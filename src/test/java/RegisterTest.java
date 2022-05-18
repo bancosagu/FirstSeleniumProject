@@ -1,8 +1,5 @@
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -28,6 +25,7 @@ public class RegisterTest {
     }
 
     @Test
+    @DisplayName("Register using valid data")
     public void registerWithValidData(){
         driver.findElement(By.cssSelector(".skip-account .label")).click();
         driver.findElement(By.cssSelector("a[title='Register']")).click();

@@ -1,7 +1,4 @@
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,6 +20,7 @@ public class CartTest {
 
 
     @Test
+    @DisplayName("Add a product to cart as guest selecting color and size")
     public void addProductToCartAsGuestSellectingColorAndSize(){
         driver.findElement(By.cssSelector("h3 a[title^='Elizabeth']")).click();
         driver.findElement(By.id("swatch21")).click();
@@ -35,6 +33,7 @@ public class CartTest {
     }
 
     @Test
+    @DisplayName("Add product to cart without selecting characteristics")
     void tryToAddProductToCartWithoutCharacteristics(){
         driver.findElement(By.cssSelector("h3 a[title^='Elizabeth']")).click();
         driver.findElement(By.cssSelector("div.add-to-cart-buttons")).click();
@@ -45,6 +44,7 @@ public class CartTest {
     }
 
     @Test
+    @DisplayName("Add product to cart while logged in")
     public void addProductToCartWhileLoggedIn(){
         driver.findElement(By.cssSelector(".skip-account .label")).click();
         driver.findElement(By.cssSelector("a[title='Log In'")).click();
@@ -64,6 +64,7 @@ public class CartTest {
     }
 
     @Test
+    @DisplayName("The product is saved in the cart after log out")
     public void productIsSavedInCartAfterLogOut(){
         driver.findElement(By.cssSelector(".skip-account .label")).click();
         driver.findElement(By.cssSelector("a[title='Log In'")).click();
@@ -94,6 +95,7 @@ public class CartTest {
         driver.findElement(By.cssSelector(".button2[title='Empty Cart']")).click();
     }
     @Test
+    @DisplayName("Test the 'empty cart' button")
     void emptyCartButtonTest(){
         driver.findElement(By.cssSelector(".skip-account .label")).click();
         driver.findElement(By.cssSelector("a[title='Log In'")).click();
@@ -112,6 +114,7 @@ public class CartTest {
     }
 
     @Test
+    @DisplayName("Add a product to cart with quantity value '2'")
     void addProductToCartWithQtyTwo(){
         driver.findElement(By.cssSelector("h3 a[title^='Elizabeth']")).click();
         driver.findElement(By.id("swatch21")).click();

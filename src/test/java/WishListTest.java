@@ -1,11 +1,7 @@
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.List;
 
 public class WishListTest {
 
@@ -20,6 +16,7 @@ public class WishListTest {
     }
 
     @Test
+    @DisplayName("Add to wishlist as guest")
     public void addToWishlistAsGuest() {
         driver.findElement(By.cssSelector(".level0.nav-5.parent")).click();
         driver.findElement(By.cssSelector("h2 a")).click();
@@ -29,7 +26,9 @@ public class WishListTest {
 
     }
 
+
     @Test
+    @DisplayName("Add to wishlist as guest, than login and check the wishlist")
     public void addToWishlistAsGuestThanLoginAndCheck(){
         driver.findElement(By.cssSelector(".level0.nav-5.parent")).click();
         driver.findElement(By.cssSelector("h2 a")).click();

@@ -21,6 +21,7 @@ public class MyAccountTest {
 
     @Test
     @Order(1)
+    @DisplayName("Change password with a new one")
     public void changePassword(){
         driver.findElement(By.cssSelector(".skip-account .label")).click();
         driver.findElement(By.cssSelector("a[title='Log In'")).click();
@@ -42,6 +43,7 @@ public class MyAccountTest {
 
     @Test
     @Order(2)
+    @DisplayName("Change the password using the same as the new one")
     public void tryToUseTheSamePasswordAsNewPassword(){
         driver.findElement(By.cssSelector(".skip-account .label")).click();
         driver.findElement(By.cssSelector("a[title='Log In'")).click();
@@ -62,6 +64,7 @@ public class MyAccountTest {
 
     @Test
     @Order(3)
+    @DisplayName("Change the password back to the original")
     public void changeThePasswordBack(){
         driver.findElement(By.cssSelector(".skip-account .label")).click();
         driver.findElement(By.cssSelector("a[title='Log In'")).click();

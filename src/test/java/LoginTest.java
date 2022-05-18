@@ -1,7 +1,4 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,6 +17,7 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Login using valid credentials")
     public void loginWithValidCredentials(){
 
         driver.findElement(By.cssSelector(".skip-account .label")).click();
@@ -34,6 +32,7 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Login using invalid password")
     public void loginWithInvalidPasswordTest() {
         driver.findElement(By.cssSelector(".skip-account .label")).click();
         driver.findElement(By.cssSelector("a[title='Log In'")).click();
@@ -45,6 +44,7 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Login using invalid email")
     public void loginWithInvalidEmail() {
 
         driver.findElement(By.cssSelector(".skip-account .label")).click();
@@ -57,6 +57,7 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Login leaving email field blank")
     public void loginWithoutEmailTest() {
         driver.findElement(By.cssSelector(".skip-account .label")).click();
         driver.findElement(By.cssSelector("a[title='Log In'")).click();
@@ -66,6 +67,7 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Login leaving the password field blank")
     public void loginWithoutPassTest() {
         driver.findElement(By.cssSelector(".skip-account .label")).click();
         driver.findElement(By.cssSelector("a[title='Log In'")).click();
@@ -76,6 +78,7 @@ public class LoginTest {
     }
 
     @Test
+    @DisplayName("Login leaving both email and passord fields blank")
     public void loginWithEmptyFieldsTest() {
         driver.findElement(By.cssSelector(".skip-account .label")).click();
         driver.findElement(By.cssSelector("a[title='Log In'")).click();
