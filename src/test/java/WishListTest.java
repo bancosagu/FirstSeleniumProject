@@ -2,9 +2,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.List;
 
 public class WishListTest {
 
@@ -28,7 +29,23 @@ public class WishListTest {
 
     }
 
-//test add to wishlist + login + check wishlist
+    @Test
+    public void addToWishlistAsGuestThanLoginAndCheck(){
+        driver.findElement(By.cssSelector(".level0.nav-5.parent")).click();
+        driver.findElement(By.cssSelector("h2 a")).click();
+        driver.findElement(By.cssSelector(".link-wishlist")).click();
+        driver.findElement(By.id("email")).sendKeys("bancosagu@yahoo.com");
+        driver.findElement(By.id("pass")).sendKeys("Pass1234");
+        driver.findElement(By.id("send2")).click();
+        WebElement myWishlistHeader = driver.findElement(By.cssSelector(".page-title h1"));
+        Assertions.assertTrue(myWishlistHeader.isDisplayed());
+        String wishlistEmptyMessage = driver.findElement(By.cssSelector(".wishlist-empty")).getText();
+        Assertions.assertEquals("You have no items in your wishlist.", wishlistEmptyMessage);
+        //Dupa login nu apare produsul selectat in wishlist
+
+    }
+
+
     @AfterEach
     public void closeDriver(){
 

@@ -128,6 +128,8 @@ public class CartTest {
     //testul cade de fiecare data deoarece nu reuseste sa citeasca valoarea in campul "qty"
 
     }
+
+
         //change quantity in cart using update button
 
 

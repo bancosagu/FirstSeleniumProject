@@ -87,7 +87,7 @@ public class MyAccountTest {
     }
 
 
-    //unsubscribe from newsletter
+
 
 
 
